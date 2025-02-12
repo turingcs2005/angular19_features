@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+@use './app/styles/_theme-colors' as my-theme;
+
+// defining a theme
+$theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: my-theme.$primary-palette,
+      tertiary: my-theme.$tertiary-palette,
+    )
+  )
+);
+
+html {
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: my-theme.$primary-palette,
+      tertiary: my-theme.$tertiary-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+  // background: var(--mat-sys-surface);
+  // color: var(--mat-sys-on-surface);
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+// extracting theme color
+$primary-10: mat.get-theme-color($theme, primary, 10);
+
+.primary-10 {
+  color: $primary-10;
+}
+
+$colors: 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
+
+@each $color in $colors {
+  .primary-#{$color} {
+    color: mat.get-theme-color($theme, primary, $color);
+  }
+}
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: $primary-10,
+    container-text-color: white,
+  ));
+}
+
+.padded {
+  padding: 20px;
+}
+
+.narrow-input {
+  width: 100px !important;
+}
+
+.medium-input {
+  width: 150px !important;
+}
+
+.medium-plus1-input {
+  width: 200px !important;
+}
+
+.medium-plus2-input {
+  width: 250px !important;
+}
+
+.long-input {
+  width: 400px !important;
+}
+
+.form-section {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.with-icon {
+  display: flex;
+  vertical-align: middle;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.help {
+  cursor: help;
+}
+
+.link {
+  @extend .pointer;
+  color: blue;
+  text-decoration: none;
+}
+
+.warn {
+  color: darkred;
+}
+
+.float-button {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 999;
+  cursor: pointer;
+}
