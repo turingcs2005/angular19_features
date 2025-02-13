@@ -23,9 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 📐 serve angular app
-app.use(express.static(path.join(__dirname, '..', 'angular')));
+app.use(express.static(path.join(__dirname, '..', 'angular', 'browser')));
 app.all('/*', (req, res, next) => {
-    res.sendFile('index.html', {root: path.join(__dirname, '..', 'angular')});
+    res.sendFile('index.html', {root: path.join(__dirname, '..', 'angular', 'browser')});
 });
 // 💻 -----------------------------
 
