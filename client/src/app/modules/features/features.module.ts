@@ -6,6 +6,8 @@ import { FeaturesComponent } from './features.component';
 import { TimepickerComponent } from './timepicker/timepicker.component';
 import { SharedModule } from '../shared/shared.module';
 
+import { MarkdownModule } from 'ngx-markdown';
+import { SecurityContext } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,11 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     FeaturesRoutingModule,
-    SharedModule
+    SharedModule,
+    MarkdownModule.forRoot({
+      sanitize: SecurityContext.NONE
+    }),
+    MarkdownModule.forChild()
   ]
 })
 export class FeaturesModule { }

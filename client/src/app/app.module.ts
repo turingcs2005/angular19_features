@@ -10,6 +10,8 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 import { MarkdownModule } from 'ngx-markdown';
 import { SharedModule } from './modules/shared/shared.module';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,10 @@ import { SharedModule } from './modules/shared/shared.module';
     MarkdownModule.forChild(),
     SharedModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
