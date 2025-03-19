@@ -6,7 +6,7 @@
     >menu</mat-icon>
   </div>
 
-  <div>Angular 19 and Node.js 22 Template</div>
+  <div>Angular 19 Feature Demo</div>
 
   <div>
     <mat-icon [routerLink]="['/documentation']" 
@@ -20,5 +20,6 @@
 </mat-toolbar>
 
 <mat-menu #appMenu="matMenu">
-  <button mat-menu-item [routerLink]="['/']"><mat-icon>home</mat-icon ></button>
+  <button mat-menu-item [routerLink]="['/']"><mat-icon>home</mat-icon > Home</button>
+  <button mat-menu-item [routerLink]="['/features/timepicker']"><mat-icon>schedule</mat-icon> Timepicker</button>
 </mat-menu>

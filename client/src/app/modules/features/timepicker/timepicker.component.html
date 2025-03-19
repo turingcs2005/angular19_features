@@ -1,0 +1,45 @@
+<h3>Timepicker</h3>
+
+<form [formGroup]="intakeForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="medium-input">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="datepicker1" formControlName="startDate" />
+        <mat-datepicker #datepicker1 />
+        <mat-datepicker-toggle [for]="datepicker1" matSuffix />
+    </mat-form-field> &nbsp; &nbsp;
+
+    <mat-form-field class="medium-input">
+        <mat-label>Start Time</mat-label>
+        <input matInput [matTimepicker]="timepicker1" formControlName="startDate" />
+        <mat-timepicker matTimepickerMin="6:00" matTimepickerMax="20:00"
+        [options]="customOptions" #timepicker1 />
+        <mat-timepicker-toggle [for]="timepicker1" matSuffix />
+    </mat-form-field> &nbsp; &nbsp;
+
+    <mat-form-field class="medium-input">
+        <mat-label>End Time</mat-label>
+        <input matInput [matTimepicker]="timepicker2" formControlName="endDate" />
+        <mat-timepicker matTimepickerMin="6:00" matTimepickerMax="20:00"
+        [options]="customOptions" #timepicker2 />
+        <mat-timepicker-toggle [for]="timepicker2" matSuffix />
+    </mat-form-field> &nbsp; &nbsp; &nbsp; &nbsp;
+
+    <button mat-mini-fab type="submit" [disabled]="!intakeForm.valid">
+        <mat-icon>check</mat-icon>
+    </button>
+
+    <br>
+    @if (intakeForm.get('startDate').value >= intakeForm.get('endDate').value) {
+        <div class="warn">Your end time needs to be later than start time!</div>
+    }
+
+</form>
+
+<ul>
+    <li>Two timestamps, hence two Date objects: startDate, endDate;</li>
+    <li>Date part must be identicial (year, month, date);</li>
+    <li>When start date changes, date part of end date automatically changes;</li>
+    <li>Prevent time reset to midnight when start date changes;</li>
+    <li>Use custom options between 6:00 am and 8:00 pm.</li>
+</ul>

@@ -33,6 +33,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { PortalModule } from '@angular/cdk/portal';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTimepickerModule } from '@angular/material/timepicker';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
@@ -87,6 +88,8 @@ import { AutoCompleteComponent } from './form-controls/auto-complete/auto-comple
         MatSlideToggleModule,
         MatTreeModule,
         MatAutocompleteModule,
+        MatTimepickerModule,
+
         FormsModule,
         ReactiveFormsModule,
         // exported components 
