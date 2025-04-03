@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTimepickerOption } from '@angular/material/timepicker';
-import { FormFactoryService } from '../../../services/form-factory.service';
+import { FormFactoryService } from '../../services/form-factory.service';
 import { FormGroup } from  '@angular/forms';
 import { startWith, pairwise } from 'rxjs';
 import { generateTimeOptions } from './module-data/module-tools';
@@ -84,5 +84,4 @@ export class TimepickerComponent implements OnInit {
   }
 
   onSubmit() {}
-
 }

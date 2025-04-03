@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FeaturesRoutingModule } from './features-routing.module';
-import { FeaturesComponent } from './features.component';
-import { TimepickerComponent } from './timepicker/timepicker.component';
+import { TimepickerRoutingModule } from './timepicker-routing.module';
+import { TimepickerComponent } from './timepicker.component';
 import { SharedModule } from '../shared/shared.module';
 
 import { MarkdownModule } from 'ngx-markdown';
@@ -11,12 +10,11 @@ import { SecurityContext } from '@angular/core';
 
 @NgModule({
   declarations: [
-    FeaturesComponent,
     TimepickerComponent
   ],
   imports: [
     CommonModule,
-    FeaturesRoutingModule,
+    TimepickerRoutingModule,
     SharedModule,
     MarkdownModule.forRoot({
       sanitize: SecurityContext.NONE
@@ -24,4 +22,4 @@ import { SecurityContext } from '@angular/core';
     MarkdownModule.forChild()
   ]
 })
-export class FeaturesModule { }
+export class TimepickerModule { }
