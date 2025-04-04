@@ -49,7 +49,7 @@ export class DateWrapperComponent implements OnInit{
     const t1 =this.intakeForm.get('startTime').value;
     const t2 = this.intakeForm.get('endTime').value;
     d.assignDateTo(t1);
-    d.assignTimeTo(t2);
+    d.assignDateTo(t2);
     console.log([t1, t2])
   }
 
