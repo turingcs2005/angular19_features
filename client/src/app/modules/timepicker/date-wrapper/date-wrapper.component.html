@@ -1,0 +1,47 @@
+<br>
+<form [formGroup]="intakeForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="medium-input">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="datepicker1" formControlName="date" />
+        <mat-datepicker #datepicker1 />
+        <mat-datepicker-toggle [for]="datepicker1" matSuffix />
+    </mat-form-field> &nbsp; &nbsp;
+
+    <mat-form-field class="medium-input">
+        <mat-label>Start Time</mat-label>
+        <input matInput [matTimepicker]="timepicker1" formControlName="startTime" />
+        <mat-timepicker matTimepickerMin="6:00" matTimepickerMax="20:00"
+        [options]="customOptions" #timepicker1 />
+        <mat-timepicker-toggle [for]="timepicker1" matSuffix />
+    </mat-form-field> &nbsp; &nbsp;
+
+    <mat-form-field class="medium-input">
+        <mat-label>End Time</mat-label>
+        <input matInput [matTimepicker]="timepicker2" formControlName="endTime" />
+        <mat-timepicker matTimepickerMin="6:00" matTimepickerMax="20:00"
+        [options]="customOptions" #timepicker2 />
+        <mat-timepicker-toggle [for]="timepicker2" matSuffix />
+    </mat-form-field> &nbsp; &nbsp; &nbsp; &nbsp;
+
+    <button mat-mini-fab type="submit" [disabled]="!intakeForm.valid">
+        <mat-icon>check</mat-icon>
+    </button>
+
+    <br>
+    @if (intakeForm.get('startTime').value >= intakeForm.get('endTime').value) {
+        <div class="warn">Your end time needs to be later than start time!</div>
+    }
+
+</form>
+
+<mat-divider></mat-divider>
+<br>
+
+<markdown mermaid src="../../../../assets/markdown/timepicker2.md"></markdown>
+
+<ul>
+    <li>Three timestamps, hence three Date objects: date, startTime, endTime;</li>
+    <li>Assign the date part from date to startTime and endTime on submit;</li>
+</ul>
+
