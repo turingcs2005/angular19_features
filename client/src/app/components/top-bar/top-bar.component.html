@@ -22,5 +22,10 @@
 <mat-menu #appMenu="matMenu">
   <button mat-menu-item [routerLink]="['/']"><mat-icon>home</mat-icon > Home</button>
   <button mat-menu-item [routerLink]="['/timepicker']"><mat-icon>schedule</mat-icon> Timepicker</button>
-  <button mat-menu-item [routerLink]="['/change-detection']"><mat-icon>change_circle</mat-icon> Change detection</button>
+  <button mat-menu-item [matMenuTriggerFor]="changeDetectionMenu"><mat-icon>change_circle</mat-icon> Change detection</button>
+</mat-menu>
+
+
+<mat-menu #changeDetectionMenu="matMenu">
+  <button mat-menu-item [routerLink]="['/change-detection']"><mat-icon>dashboard</mat-icon> Overview</button>
 </mat-menu>

@@ -8,8 +8,9 @@ import { Component, DoCheck } from '@angular/core';
 })
 export class AppComponent implements DoCheck {
 
+  // log change detection cycle 
   ngDoCheck(): void {
-    console.log(this.constructor.name + ' ngDoCheck');
+    console.log(this.constructor.name + '🌀');
   }
 
 }
