@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-child1',
@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './child1.component.scss'
 })
 export class Child1Component {
+  @Input() friend: any;
 
 }

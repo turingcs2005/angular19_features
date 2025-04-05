@@ -7,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './parent1.component.scss'
 })
 export class Parent1Component {
+  friend = {
+    msg: 'Hello',
+    name: 'John'
+  }
+
+  
+  toggleFriendMessage() {
+    this.friend.msg = this.friend.msg === 'Hello' ? 'World' : 'Hello';
+  }
 
 }
