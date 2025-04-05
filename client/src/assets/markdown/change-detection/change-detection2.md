@@ -1,8 +1,6 @@
-# Angular Change Detection
-
-Each component has its own change detection strategy, either default or on-push
+Each component has its own change detection strategy of either default or on-push.
 - default: always check everything, just in case something changed (safer, less efficient)
-- on-push: only check me when something relevant to me has clearly changed (more efficient, less safe)
+- on-push: only check me when something relevant (input, async pipe) to me has clearly changed (more efficient, less safe)
 
 <table>
 <tr>
@@ -42,5 +40,7 @@ Each component has its own change detection strategy, either default or on-push
 </tr>
 </table>
 
-Regardless of change detection strategy, we can use ngDoCheck() lifecycle hook to log change detection cycles, even if nothing changed.
+You can use ngDoCheck() lifecycle hook to log change detection cycles.
+
+For most components, the default change detection strategy will suffice, with maybe some occasional tweaks here and there. The real problem occurs when change detection fails to detect the need for UI refresh.
 
