@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,11 +6,4 @@ import { Component, DoCheck } from '@angular/core';
   styleUrl: './app.component.scss',
   standalone: false
 })
-export class AppComponent implements DoCheck {
-
-  // log change detection cycle 
-  ngDoCheck(): void {
-    console.log(this.constructor.name + '🌀');
-  }
-
-}
+export class AppComponent {}

@@ -7,10 +7,8 @@ import { Component, DoCheck, ChangeDetectionStrategy } from '@angular/core';
   standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopBarComponent implements DoCheck{
+export class TopBarComponent {
 
   // log change detection cycle 
-  ngDoCheck(): void {
-    console.log(this.constructor.name + '🌀');
-  }
+
 }

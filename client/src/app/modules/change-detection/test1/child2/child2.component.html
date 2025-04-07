@@ -1,1 +1,10 @@
-<p>My friend said: {{ this.friend.msg }}</p>
+<p>Change detection strategy is component-specific. Under 'on-push' change detection strategy:</p>
+
+<ul>
+    <li>When 'refresh' button on the parent component is clicked, change detection in child2 is triggered 
+        (default strategy for parent), but friend's reference didn't change so the UI didn't update for child2.</li>
+    <li>If we click on 'check' button on child2, if the button does nothing, change detection won't trigger.</li>
+</ul>
+
+<button mat-mini-fab (click)="forceCD()"><mat-icon>check</mat-icon></button>
+<p>My friend said: <span class="warn">{{ this.friend.msg }}</span></p>

@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, DoCheck, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-child2',
@@ -7,6 +7,18 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   styleUrl: './child2.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Child2Component {
+export class Child2Component implements DoCheck {
   @Input() friend: any;
+
+  constructor(public cdr: ChangeDetectorRef) {}
+
+  // console log whenever change detection is triggered
+  ngDoCheck(): void {
+    console.log(this.constructor.name + '🌀');
+  }
+
+  forceCD() {
+    this.cdr.detectChanges();
+  }
+
 }
