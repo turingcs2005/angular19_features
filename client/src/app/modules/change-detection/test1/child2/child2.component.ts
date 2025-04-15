@@ -1,4 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy, DoCheck, ChangeDetectorRef } from '@angular/core';
+import { interval, take, map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-child2',
@@ -10,6 +11,8 @@ import { Component, Input, ChangeDetectionStrategy, DoCheck, ChangeDetectorRef }
 export class Child2Component implements DoCheck {
   @Input() friend: any;
 
+  countdown$: Observable<number>;
+
   constructor(public cdr: ChangeDetectorRef) {}
 
   // console log whenever change detection is triggered
@@ -18,7 +21,14 @@ export class Child2Component implements DoCheck {
   }
 
   forceCD() {
-    this.cdr.detectChanges();
+    const seconds = 2;
+    this.countdown$ = interval(5000).pipe(
+      take(seconds - 1), // emit 2 values, 1, 0
+      map(i => seconds - i)
+    )
+    setTimeout( () => {
+      this.cdr.detectChanges();
+    }, 15000)
   }
 
 }

@@ -1,28 +1,52 @@
 <p>Parent</p>
-<p>My friend said: {{ friend.msg }} &nbsp;
-    <button mat-mini-fab (click)="toggleFriendMessage()">
+<p>My friend said: {{ friend | json }} &nbsp;
+    <button mat-mini-fab (click)="toggleFriendMessage()" matTooltip="Toggle friend.msg between Hello and World">
     <mat-icon>refresh</mat-icon>
+    </button> &nbsp; &nbsp;
+
+    <button mat-mini-fab (click)="markForCheck()" matTooltip="markForCheck">
+    <mat-icon>autorenew</mat-icon>
+    </button> &nbsp; &nbsp;
+
+    <button mat-mini-fab (click)="resetReference()" matTooltip="Reset friend to a new object">
+    <mat-icon>redo</mat-icon>
+    </button> &nbsp; &nbsp; 
+    
+    <button mat-mini-fab (click)="increment()" matTooltip="Increment an input value">
+    <mat-icon>add</mat-icon>
     </button>
 </p>
 
-<br>
-<mat-divider></mat-divider>
-<br>
+<mat-accordion>
 
-<p>Child 1: default change detection</p>
-<p>Under the default change detection strategy, the whole tree is checked, regardless of trigger.</p>
-<app-child1 [friend]="friend"></app-child1>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Child 1: default change detection with tree shaking (all components run CD)
+            </mat-panel-title>
+        </mat-expansion-panel-header>
 
-<br>
-<mat-divider></mat-divider>
-<br>
+        <app-child1 [friend]="friend"></app-child1>
+    </mat-expansion-panel>
 
-<p>Child 2: on-push change detection</p>
-<app-child2 [friend]="friend"></app-child2>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Child 2: on-push change detection
+            </mat-panel-title>
+        </mat-expansion-panel-header>
 
-<br>
-<mat-divider></mat-divider>
-<br>
+        <app-child2 [friend]="friend"></app-child2>
+    </mat-expansion-panel>
 
-<p>Child 3</p>
-<app-child3 [friend]="friend"></app-child3>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Child 3: on-push change detection
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <app-child3 [friend]="friend" [v]="value"></app-child3>
+    </mat-expansion-panel>
+
+</mat-accordion>

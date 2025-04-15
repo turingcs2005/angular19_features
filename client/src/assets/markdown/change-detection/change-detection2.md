@@ -1,21 +1,42 @@
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid #000; /* solid black line */
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
 Each component has its own change detection strategy of either default or on-push.
 - default: always check everything, just in case something changed (safer, less efficient)
 - on-push: only check me when something relevant (input, async pipe) to me has clearly changed (more efficient, less safe)
 
 <table>
 <tr>
-    <th>default
-    </th>
-    <th>on-push
-    </th>
+  <th colspan="3" style="text-align: center">A Comparison of Change Detection Strategies</th>
+</tr>
+<tr><td>Strategy</td>
+    <td style="text-align: center">default</td>
+    <td style="text-align: center">on-push</td>
 </tr>
 <tr>
-    <td colspan="2">Change detection triggers<td>
+  <td>pros and cons</td>
+  <td>triggers more often, checks more components, but computationally expensive</td>
+  <td>triggers less often, checks fewer components, but computationally parsimonious</td>
+</tr>
 <tr>
-<tr>
+    <td>Triggers</td>
     <td>
         <ul>
-            <li>User input</li>
+            <li>@Input() reference change</li>
             <li>setTimeout(), setInterval()</li>
             <li>HTTP call</li>
             <li>Observable emission</li>
@@ -32,15 +53,15 @@ Each component has its own change detection strategy of either default or on-pus
     </td>
 </tr>
 <tr>
-    <td colspan="2">Usage<td>
-<tr>
-<tr>
+    <td>Usage</td>
     <td>Simple components</td>
     <td>Performance-critical components</td>
 </tr>
 </table>
 
-You can use ngDoCheck() lifecycle hook to log change detection cycles.
+When change detection is run, Angular checks all data bindings in the templates. You can use <mark>ngDoCheck()</mark> lifecycle hook to log change detection cycles.
 
-For most components, the default change detection strategy will suffice, with maybe some occasional tweaks here and there. The real problem occurs when change detection fails to detect the need for UI refresh.
+For most components, the default change detection strategy will suffice, with maybe some occasional tweaks here and there. The real problem occurs when 
+- Change detection fails to trigger;
+- Change detection triggers but fails to detect change(s).
 
